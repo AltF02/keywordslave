@@ -1,2 +1,4 @@
 conf.ini
 .idea
+__pycache__
+bin/__pycache__
