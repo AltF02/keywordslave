@@ -1,2 +1,2 @@
-praw~=7.1.0
-discord_webhook~=0.8.0
+asyncpraw~=7.1.0
+discord.py~=1.5.1
