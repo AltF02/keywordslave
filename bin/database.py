@@ -12,9 +12,11 @@ class DataBase:
             print(e)
 
     @staticmethod
-    def get_keywords() -> list[str]:
+    def get_keywords() -> list[str, int]:
         if DataBase.conn:
             cursor = DataBase.conn.cursor()
             cursor.execute("SELECT * FROM main.keywords")
-            rows = [row[0] for row in cursor.fetchall()]
+            rows = [row for row in cursor.fetchall()]
+            cursor.close()
+            DataBase.conn.commit()
             return rows
