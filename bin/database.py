@@ -12,7 +12,7 @@ class DataBase:
             print(e)
 
     @staticmethod
-    def get_keywords() -> list[str, int]:
+    def get_keywords():
         if DataBase.conn:
             cursor = DataBase.conn.cursor()
             cursor.execute("SELECT * FROM main.keywords")

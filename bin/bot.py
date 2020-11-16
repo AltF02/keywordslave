@@ -1,5 +1,4 @@
 from discord.ext import commands
-from sqlite3 import IntegrityError
 
 from bin.database import DataBase
 

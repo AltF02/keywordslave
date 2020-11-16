@@ -30,6 +30,13 @@ class Commands(commands.Cog):
         cursor.close()
         self.conn.commit()
 
+    @commands.Cog.listener(name="on_command_error")
+    async def error_handler(self, ctx, error):
+        if isinstance(error, commands.CommandNotFound) or isinstance(error, commands.UserNotFound):
+            return
+        else:
+            await ctx.send(f"`{error}`\nPlease call my dad, I'm scared")
+
 
 def setup(bot):
     bot.add_cog(Commands(bot))

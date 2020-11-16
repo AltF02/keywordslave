@@ -5,7 +5,7 @@ from discord.ext import commands, tasks
 
 from bin.config import conf
 from bin.database import DataBase
-from bin.reddit import reddit
+from main import reddit
 
 
 class Tasks(commands.Cog):
@@ -29,11 +29,14 @@ class Tasks(commands.Cog):
     async def send_notification(self, submission, matching):
         await submission.author.load()
         channel = await self.bot.fetch_channel(self.channel_id)
+
         embed = discord.Embed(color=0xEE7E38, url=f"https://reddit.com{submission.permalink}")
         embed.title = submission.title
         embed.set_author(name=submission.author, icon_url=submission.author.icon_img)
+
         if not submission.is_self:
             embed.set_image(url=submission.url)
+
         embed.timestamp = datetime.utcnow()
         embed.set_footer(text=f"👍 {submission.score} | 💬 {submission.num_comments}")
 
