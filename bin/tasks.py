@@ -20,7 +20,7 @@ class Tasks(commands.Cog):
         await self.bot.wait_until_ready()
 
         subreddit = await reddit.subreddit("dankmemes+memes+okbuddyretard")  # dankmemes+memes+okbuddyretard
-        async for submission in subreddit.stream.submissions():
+        async for submission in subreddit.stream.submissions(skip_existing=True):
             keywords = DataBase.get_keywords()
             matching = [s for s in keywords if s[0].lower() in submission.title.lower()]
             # print(submission.title)
