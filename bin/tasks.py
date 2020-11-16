@@ -23,7 +23,7 @@ class Tasks(commands.Cog):
         async for submission in subreddit.stream.submissions():
             keywords = DataBase.get_keywords()
             matching = [s for s in keywords if s[0].lower() in submission.title.lower()]
-            print(submission.title)
+            # print(submission.title)
             if matching:
                 await self.send_notification(submission, matching[0])
 
