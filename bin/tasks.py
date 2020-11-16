@@ -19,10 +19,11 @@ class Tasks(commands.Cog):
     async def keyword_task(self):
         await self.bot.wait_until_ready()
 
-        subreddit = await reddit.subreddit("matthewsplaypalace")  # dankmemes+memes+okbuddyretard
+        subreddit = await reddit.subreddit("dankmemes+memes+okbuddyretard")  # dankmemes+memes+okbuddyretard
         async for submission in subreddit.stream.submissions():
             keywords = DataBase.get_keywords()
             matching = [s for s in keywords if s[0].lower() in submission.title.lower()]
+            print(submission.title)
             if matching:
                 await self.send_notification(submission, matching[0])
 
@@ -40,7 +41,7 @@ class Tasks(commands.Cog):
         embed.timestamp = datetime.utcnow()
         embed.set_footer(text=f"👍 {submission.score} | 💬 {submission.num_comments}")
 
-        await channel.send(f"<@{matching[1]}> your keyword was mentioned in r/{submission.subreddit}!", embed=embed)
+        await channel.send(f"<@{matching[1]}> your keyword `{matching[0]}` was mentioned in r/{submission.subreddit}!", embed=embed)
 
 
 def setup(bot):
