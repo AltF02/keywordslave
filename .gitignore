@@ -2,3 +2,5 @@ conf.ini
 .idea
 __pycache__
 bin/__pycache__
+keyword-bot.zip
+keyword-bot.db
