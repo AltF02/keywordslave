@@ -16,7 +16,7 @@ class Commands(commands.Cog):
 
         try:
             cursor = self.conn.cursor()
-            cursor.execute("INSERT INTO main.keywords (keyword, user_id) VALUES (?,?)", (keyword, ctx.author.id))
+            cursor.execute("INSERT INTO main.keywords (keyword, user_id) VALUES (LOWER(?),?)", (keyword, ctx.author.id))
             cursor.close()
             self.conn.commit()
         except IntegrityError:
